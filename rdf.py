@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-@Time    : 2020-09-03 @IOP
+@Time    : 2020-11-29 @IOP
 @Author  : cndaqiang
 @Blog    : cndaqiang.github.io
 @File    : 读入含时xyz或POSCAR处理rdf
