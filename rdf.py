@@ -202,7 +202,7 @@ def rdf(nstep,ntyp,nat,xyz,cell):
     rdflable=rdflable.astype(np.str)
     irdftype=0
     supercell=np.zeros(3)
-    for i in np.arange(3):  supercell[i]=max(np.around(maxr/cell[i,i]),1) #超胞数量，至少3x3x3
+    for i in np.arange(3):  supercell[i]=max(np.around(maxr/cell[i,i]),2) #超胞数量，至少3x3x3
     supercell.astype(np.int)
     print("Super cell",supercell)
     for istep in np.arange(nstep):
@@ -270,11 +270,13 @@ if True: #画图
         for y in np.arange(col):
             if i  < rdftype:#画单个键长
                 axs[x,y].plot(grid,avTrdf[i],label=rdflable[i])
+                axs[x,y].hlines(1.0, minr,maxr)
                 axs[x,y].legend()
                 i=i+1
             elif i  == rdftype :#如果还有空间就画所有键长
                 for j in np.arange(rdftype):
                     axs[x,y].plot(grid,avTrdf[j],label=rdflable[j])
+                    axs[x,y].hlines(1.0, minr,maxr)
                     axs[x,y].legend()
                     i=i+1
                 break
@@ -287,4 +289,3 @@ if True: #画图
     filename=inputfile+'.averagerdf.png'
     print('Save png to '+filename)
     plt.savefig(filename,dpi=100)
-print(calV(cell))
